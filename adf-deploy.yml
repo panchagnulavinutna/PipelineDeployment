@@ -4,11 +4,11 @@ trigger:
       - main
 
 variables:
-  azureSubscription: 'MyAzureServiceConnection'  # Azure service connection name
-  resourceGroup: 'my-resource-group'
-  devFactoryName: 'my-adf-dev'
-  prodFactoryName: 'my-adf-prod'
-  location: 'East US'
+  azureSubscription: 'vinutnaserviceconn'  # Azure service connection name
+  resourceGroup: 'myDataPlatformRG'
+  devFactoryName: 'vinutnadfdev'
+  prodFactoryName: 'vinutnadfprod'
+  location: 'Japan East'
 
 stages:
   - stage: DeployToDev
@@ -31,7 +31,7 @@ stages:
                   --factory-name $(devFactoryName) \
                   --resource-group $(resourceGroup) \
                   --name SamplePipeline \
-                  --pipeline "@$(Build.SourcesDirectory)/SamplePipeline.json"
+                  --pipeline "@$(Build.SourcesDirectory)/Pipeline1.json"
 
   - stage: DeployToProd
     displayName: 'Deploy to Production ADF'
@@ -39,7 +39,7 @@ stages:
     condition: succeeded()
     jobs:
       - deployment: DeployProd
-        environment: prod-env  # approval happens here
+        environment: vinutna-env  # approval happens here
         strategy:
           runOnce:
             deploy:
@@ -56,4 +56,4 @@ stages:
                         --factory-name $(prodFactoryName) \
                         --resource-group $(resourceGroup) \
                         --name SamplePipeline \
-                        --pipeline "@$(Build.SourcesDirectory)/SamplePipeline.json"
+                        --pipeline "@$(Build.SourcesDirectory)/Pipeline1.json"
