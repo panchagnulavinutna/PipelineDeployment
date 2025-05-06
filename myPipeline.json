@@ -1,0 +1,43 @@
+{
+    "name": "MyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "CopyActivity",
+                "type": "Copy",
+                "inputs": [
+                    {
+                        "referenceName": "InputDataset",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "OutputDataset",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "writeBatchSize": 5000
+                    }
+                }
+            }
+        ],
+        "parameters": {
+            "sourcePath": {
+                "type": "String"
+            },
+            "sinkPath": {
+                "type": "String"
+            },
+            "fileType": {
+                "type": "String"
+            }
+        }
+    }
+}
