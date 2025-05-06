@@ -1,0 +1,26 @@
+{
+    "name": "DailyTrigger",
+    "properties": {
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Day",
+                "interval": 1,
+                "startTime": "2025-05-01T00:00:00Z"
+            }
+        },
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "referenceName": "MyPipeline",
+                    "type": "PipelineReference"
+                },
+                "parameters": {
+                    "sourcePath": "sourcefolder/salesdata.csv",
+                    "sinkPath": "outputfolder/processed_data.csv",
+                    "fileType": "csv"
+                }
+            }
+        ]
+    }
+}
