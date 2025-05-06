@@ -31,7 +31,7 @@ stages:
                   --factory-name $(devFactoryName) \
                   --resource-group $(resourceGroup) \
                   --name SamplePipeline \
-                  --pipeline "@$(Build.SourcesDirectory)/Pipeline1.json"
+                  --pipeline "@$(Build.SourcesDirectory)/SamplePipeline.json"
 
   - stage: DeployToProd
     displayName: 'Deploy to Production ADF'
@@ -56,4 +56,4 @@ stages:
                         --factory-name $(prodFactoryName) \
                         --resource-group $(resourceGroup) \
                         --name SamplePipeline \
-                        --pipeline "@$(Build.SourcesDirectory)/Pipeline1.json"
+                        --pipeline "@$(Build.SourcesDirectory)/SamplePipeline.json"
