@@ -1,0 +1,22 @@
+{
+    "name": "InputDataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "filePath": "@{pipeline().parameters.sourcePath}",
+                "folderPath": "input/",
+                "fileName": "salesdata.csv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\"",
+            "firstRowAsHeader": true
+        }
+    }
+}
